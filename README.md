@@ -63,10 +63,15 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 $ curl -fLo https://raw.githubusercontent.com/gyuha/vim-start/master/vimrc ~/.vimrc
 ```
 
-
 ### Windows
 ```powershell
 cd [vim install path]
 $uri = 'https://raw.githubusercontent.com/gyuha/vim-start/master/vimrc'
 (New-Object Net.WebClient).DownloadFile($uri, $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("vimrc"))
+```
+
+## Vim run
+Run vim and type the following command:
+```vim
+:PlugInstall
 ```
