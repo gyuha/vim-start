@@ -71,6 +71,7 @@ Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -123,8 +124,9 @@ set ruler
 set number
 
 
-if filereadable(expand(g:vim_path."/plugged/molokai/colors/molokai.vim"))
-	colorscheme molokai
+if filereadable(expand(g:vim_path."/plugged/vim-colors-solarized/colors/solarized.vim"))
+	set background=dark
+	colorscheme solarized
 endif
 
 if has("win32")
@@ -220,6 +222,33 @@ endfun
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" 홈 디렉토리가 존재할 때에만 사용할 수 있는 기능들
+if exists("$HOME")
+	" 경로 설정
+	let s:dir_tmp = g:vim_path."/tmp"
+	let s:dir_backup = g:vim_path."/backup"
+
+	" 임시 디렉토리 설정
+	if isdirectory(s:dir_tmp)
+		set swf
+		let &dir = s:dir_tmp
+	else
+		set noswf
+		set dir=.
+	endif
+
+	" 백업 디렉토리 설정
+	if isdirectory(s:dir_backup)
+		set bk
+		let &bdir = s:dir_backup
+		set bex=.bak
+	else
+		set nobk
+	endif
+
+endif
+
 
 "*****************************************************************************
 "" Mappings
@@ -360,7 +389,9 @@ noremap <F8> :%s/\r\(\n\)/\1/g<CR>
 set pastetoggle=<F12>			" pastetoggle (sane indentation on pastes)
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Include user's language vim config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable(expand(g:vim_path."/.vimrc.php"))
 	execute "source ".g:vim_path . "/.vimrc.php"
 endif
@@ -393,3 +424,4 @@ if filereadable(expand(g:vim_path."/.vimrc.local"))
 	execute "source ".g:vim_path . "/.vimrc.local"
 endif
 
+hi clear texItalStyle

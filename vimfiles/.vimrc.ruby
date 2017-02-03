@@ -1,4 +1,4 @@
-"vim: set ft=vim:
+" vim:set ft=vim:
 " ruby
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1

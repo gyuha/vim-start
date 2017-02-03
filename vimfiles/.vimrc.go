@@ -1,4 +1,4 @@
-"vim: set ft=vim:
+" vim:set ft=vim:
 " go
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',

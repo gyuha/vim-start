@@ -1,4 +1,4 @@
-"vim: set ft=vim:
+" vim:set ft=vim:
 " python
 " vim-python
 augroup vimrc-python

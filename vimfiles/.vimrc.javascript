@@ -1,4 +1,4 @@
-"vim: set ft=vim:
+" vim:set ft=vim:
 " javascript
 let g:javascript_enable_domhtmlcss = 1
 
