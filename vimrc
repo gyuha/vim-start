@@ -6,7 +6,7 @@ let g:vim_path = "~/.vim"
 
 if has("win32")
 	let g:vim_path = "~/vimfiles"
-else 
+else
 	let vimplug_exists=expand(g:vim_path . '/autoload/plug.vim')
 
 	let g:vim_bootstrap_langs = ""
@@ -33,7 +33,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/grep.vim'
-Plug 'vim-scripts/CSApprox'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
@@ -56,9 +55,11 @@ if !has("win32")
 	endif
 
 	if v:version >= 704
-		"" Snippets
-		Plug 'SirVer/ultisnips'
-		Plug 'FelikZ/ctrlp-py-matcher'
+		if has("python3") || has("python")
+			"" Snippets
+			Plug 'SirVer/ultisnips'
+			Plug 'FelikZ/ctrlp-py-matcher'
+		endif
 	endif
 endif
 
@@ -67,7 +68,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
 
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
@@ -190,7 +191,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 
 let g:airline_theme = 'powerlineish'
@@ -223,31 +224,68 @@ endfun
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
-" 홈 디렉토리가 존재할 때에만 사용할 수 있는 기능들
-if exists("$HOME")
-	" 경로 설정
-	let s:dir_tmp = g:vim_path."/tmp"
-	let s:dir_backup = g:vim_path."/backup"
-
-	" 임시 디렉토리 설정
-	if isdirectory(s:dir_tmp)
-		set swf
-		let &dir = s:dir_tmp
-	else
-		set noswf
-		set dir=.
-	endif
-
-	" 백업 디렉토리 설정
-	if isdirectory(s:dir_backup)
-		set bk
-		let &bdir = s:dir_backup
-		set bex=.bak
-	else
-		set nobk
-	endif
-
+" Save your backups to a less annoying place than the current directory.
+" If you have .vim-backup in the current directory, it'll use that.
+" Otherwise it saves it to ~/.vim/backup or . if all else fails.
+if isdirectory($HOME . '/.vim/backup') == 0
+	:silent !mkdir -p ~/.vim/backup >/dev/null 2>&1
 endif
+set backupdir-=.
+set backupdir+=.
+set backupdir-=~/
+set backupdir^=~/.vim/backup/
+set backupdir^=./.vim-backup/
+set backup
+
+" Save your swp files to a less annoying place than the current directory.
+" If you have .vim-swap in the current directory, it'll use that.
+" Otherwise it saves it to ~/.vim/swap, ~/tmp or .
+if isdirectory($HOME . '/.vim/swap') == 0
+	:silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
+endif
+set directory=./.vim-swap//
+set directory+=~/.vim/swap//
+set directory+=~/tmp//
+set directory+=.
+
+" viminfo stores the the state of your previous editing session
+set viminfo+=n~/.vim/viminfo
+
+if exists("+undofile")
+	" undofile - This allows you to use undos after exiting and restarting
+	" This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+	" :help undo-persistence
+	" This is only present in 7.3+
+	if isdirectory($HOME . '/.vim/undo') == 0
+		:silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+	endif
+	set undodir=./.vim-undo//
+	set undodir+=~/.vim/undo//
+	set undofile
+endif
+
+" Instead of reverting the cursor to the last position in the buffer, we
+" set it to the first line when editing a git commit message
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" Setting up the directories {
+set backup					" Backups are nice ...
+if has('persistent_undo')
+	set undofile				" So is persistent undo ...
+	set undolevels=1000			" Maximum number of changes that can be undone
+	set undoreload=10000		" Maximum number lines to save for undo on a buffer reload
+endif
+
+" To disable views add the following to your .vimrc.bundles.local file:
+"	let g:g_no_views = 1
+if !exists('g:g_no_views')
+	" Add exclusions to mkview and loadview
+	" eg: *.*, svn-commit.tmp
+	let g:skipview_files = [
+				\ '\[example pattern\]'
+				\ ]
+endif
+" }
 
 
 "*****************************************************************************
