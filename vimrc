@@ -33,7 +33,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/grep.vim'
-Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
@@ -205,20 +204,22 @@ set autoread
 
 let g:NERDTreeWinSize = 30
 
-" Formatting 
+" Formatting
 set wrap						" Wrap long lines
 set autoindent					" Indent at the same level of the previous line
 
 set nospell					  	" Spell checking off
 
 "" remove white spaces
-fun! <SID>StripTrailingWhitespaces()
+fun! StripTrailingWhitespaces()
 	let l = line(".")
 	let c = col(".")
 	%s/\s\+$//e
 	%s/\($\n\s*\)\+\%$//e
 	call cursor(l, c)
 endfun
+
+autocmd BufWritePre *.cpp,*.hpp,*.i,*.php,*.c,*.py,*.go,*.sh,*.cs,*.md,*.json :call StripTrailingWhitespaces()
 
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
