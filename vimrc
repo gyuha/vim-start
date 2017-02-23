@@ -219,7 +219,7 @@ fun! StripTrailingWhitespaces()
 	call cursor(l, c)
 endfun
 
-autocmd BufWritePre *.cpp,*.hpp,*.i,*.php,*.c,*.py,*.go,*.sh,*.cs,*.md,*.json :call StripTrailingWhitespaces()
+autocmd BufWritePre *.cpp,*.h,*.php,*.c,*.py,*.go,*.sh,*.cs,*.md,*.json :call StripTrailingWhitespaces()
 
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
