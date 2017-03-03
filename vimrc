@@ -124,9 +124,9 @@ set ruler
 set number
 
 
-if filereadable(expand(g:vim_path."/plugged/vim-colors-solarized/colors/solarized.vim"))
+if filereadable(expand(g:vim_path."/plugged/molokai/colors/molokai.vim"))
 	set background=dark
-	colorscheme solarized
+	colorscheme molokai 
 endif
 
 if has("win32")
