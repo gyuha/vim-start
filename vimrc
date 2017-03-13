@@ -368,6 +368,9 @@ if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
 
+" For when you forget to sudo.. Really Write the file.
+cmap w!! w !sudo tee % >/dev/null
+
 "" Copy/Paste/Cut
 if has('unnamedplus')
 	set clipboard=unnamed,unnamedplus
