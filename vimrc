@@ -40,6 +40,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'easymotion/vim-easymotion'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
+Plug 'easymotion/vim-easymotion'
 
 
 if !has("win32")
@@ -145,11 +146,7 @@ set gfn=Monospace\ 10
 
 if has("gui_running")
 	set guioptions=egrti
-
-	if has("gui_mac") || has("gui_macvim")
-		set guifont=Menlo:h12
-		set transparency=7
-	endif
+	set guifont=D2Coding:h13
 else
 	if $COLORTERM == 'gnome-terminal'
 		set term=gnome-256color

@@ -36,7 +36,7 @@ $ sudo dnf install ncurses-devel git ctags-etags curl
 
 * pyflakes
 * jedi
-* neovim (neovim only) 
+* neovim (neovim only)
 
 ```bash
 $ pip install flake8 jedi
@@ -66,13 +66,13 @@ $ curl https://raw.githubusercontent.com/gyuha/vim-start/master/vimrc > ~/.vimrc
 Run vim
 
 ### Windows
-```powershell
-cd [vim install path]
-$uri = 'https://raw.githubusercontent.com/gyuha/vim-start/master/vimrc'
-(New-Object Net.WebClient).DownloadFile($uri, $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("vimrc"))
-```
+
+	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+위 파일을 다운로드 받아서 설치된 vim의 `autoload` 폴더에 카피 한다.
 
 Run vim and type the following command:
+
 ```vim
 :PlugInstall
 ```
