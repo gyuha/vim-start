@@ -147,6 +147,7 @@ set gfn=Monospace\ 10
 if has("gui_running")
 	set guioptions=egrti
 	set guifont=D2Coding:h13
+	set clipboard=unnamed
 else
 	if $COLORTERM == 'gnome-terminal'
 		set term=gnome-256color
