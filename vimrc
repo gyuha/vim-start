@@ -28,19 +28,18 @@ call plug#begin(expand(g:vim_path . '/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/grep.vim'
-Plug 'Raimondi/delimitMate'
-Plug 'scrooloose/syntastic'
-Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
+Plug 'Raimondi/delimitMate'
+Plug 'Yggdroot/indentLine'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
-Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/grep.vim'
 
 
 if !has("win32")
@@ -146,7 +145,9 @@ set gfn=Monospace\ 10
 
 if has("gui_running")
 	set guioptions=egrti
-	set guifont=D2Coding:h13
+	set guifont=ACoding\ 13
+	set guifontwide=13
+	set lsp=10
 	set clipboard=unnamed
 else
 	if $COLORTERM == 'gnome-terminal'
@@ -427,6 +428,9 @@ noremap <F6> :BufExplorer<CR>
 " Dos to Unix
 noremap <F8> :%s/\r\(\n\)/\1/g<CR>
 set pastetoggle=<F12>			" pastetoggle (sane indentation on pastes)
+
+"" vim-markdown
+let g:vim_markdown_conceal = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
