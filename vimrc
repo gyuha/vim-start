@@ -142,12 +142,11 @@ set mousemodel=popup
 set t_Co=256
 set gfn=Monospace\ 10
 
-
 if has("gui_running")
 	set guioptions=egrti
 	set guifont=ACoding\ 13
-	set guifontwide=13
-	set lsp=10
+	set guifontwide=14
+	set lsp=9
 	set clipboard=unnamed
 else
 	if $COLORTERM == 'gnome-terminal'
