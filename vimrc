@@ -448,6 +448,8 @@ if filereadable(expand(g:vim_path."/.vimrc.javascript"))
 endif
 
 if filereadable(expand(g:vim_path."/.vimrc.go"))
+	Plug 'Valloric/YouCompleteMe'
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	execute "source ".g:vim_path . "/.vimrc.go"
 endif
 
