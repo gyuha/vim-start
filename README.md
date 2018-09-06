@@ -32,6 +32,21 @@ $ sudo pacman -S git-core ctags ncurses curl
 $ sudo dnf install ncurses-devel git ctags-etags curl
 ```
 
+### You-completeme
+```bash
+sudo apt install build-essential cmake
+sudo apt install python-dev python3-dev
+sudo apt install clang
+sudo apt install vim-youcompleteme
+```
+
+### Go bundle
+
+
+#### Ref
+* [https://golangkorea.github.io/post/vim-go/](vim-go를 이용한 go 개발 환경 구축)
+* [https://github.com/socialpercon/getting-start-golang/blob/master/docs/vim-go.md](vim-go 환경 만들기)
+
 ### Python bundle (optionally)
 
 * pyflakes
