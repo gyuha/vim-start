@@ -1,0 +1,5 @@
+" vim:set ft=vim:
+"" Devlopment Bundle
+
+
+nmap <F8> :TagbarToggle<CR>

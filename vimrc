@@ -73,6 +73,32 @@ Plug 'xolox/vim-session'
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 
+
+" development
+if filereadable(expand(g:vim_path."/vimrc.dev"))
+	Plug 'majutsushi/tagbar'
+	Plug 'Valloric/YouCompleteMe'
+endif
+
+" go
+if filereadable(expand(g:vim_path."/vimrc.go"))
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+endif
+
+" html
+if filereadable(expand(g:vim_path."/vimrc.html"))
+	Plug 'hail2u/vim-css3-syntax'
+	Plug 'gorodinskiy/vim-coloresque'
+	Plug 'tpope/vim-haml'
+	Plug 'mattn/emmet-vim'
+endif
+
+" php
+if filereadable(expand(g:vim_path."/vimrc.php"))
+	Plug 'arnaud-lb/vim-php-namespace'
+	Plug 'stanangeloff/php.vim'
+endif
+
 call plug#end()
 
 " Required:
@@ -425,7 +451,7 @@ endfunction
 noremap <F5> :NERDTreeToggle<CR>
 noremap <F6> :BufExplorer<CR>
 " Dos to Unix
-noremap <F8> :%s/\r\(\n\)/\1/g<CR>
+" noremap <F8> :%s/\r\(\n\)/\1/g<CR>
 set pastetoggle=<F12>			" pastetoggle (sane indentation on pastes)
 
 "" vim-markdown
@@ -435,38 +461,40 @@ let g:vim_markdown_conceal = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Include user's language vim config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable(expand(g:vim_path."/.vimrc.php"))
-	execute "source ".g:vim_path . "/.vimrc.php"
+if filereadable(expand(g:vim_path."/vimrc.dev"))
+	execute "source ".g:vim_path . "/vimrc.dev"
 endif
 
-if filereadable(expand(g:vim_path."/.vimrc.html"))
-	execute "source ".g:vim_path . "/.vimrc.html"
+if filereadable(expand(g:vim_path."/vimrc.php"))
+	execute "source ".g:vim_path . "/vimrc.php"
 endif
 
-if filereadable(expand(g:vim_path."/.vimrc.javascript"))
-	execute "source ".g:vim_path . "/.vimrc.javascript"
+if filereadable(expand(g:vim_path."/vimrc.html"))
+	execute "source ".g:vim_path . "/vimrc.html"
 endif
 
-if filereadable(expand(g:vim_path."/.vimrc.go"))
-	Plug 'Valloric/YouCompleteMe'
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-	execute "source ".g:vim_path . "/.vimrc.go"
+if filereadable(expand(g:vim_path."/vimrc.javascript"))
+	execute "source ".g:vim_path . "/vimrc.javascript"
 endif
 
-if filereadable(expand(g:vim_path."/.vimrc.html"))
-	execute "source ".g:vim_path . "/.vimrc.html"
+if filereadable(expand(g:vim_path."/vimrc.go"))
+	execute "source ".g:vim_path . "/vimrc.go"
 endif
 
-if filereadable(expand(g:vim_path."/.vimrc.python"))
-	execute "source ".g:vim_path . "/.vimrc.python"
+if filereadable(expand(g:vim_path."/vimrc.html"))
+	execute "source ".g:vim_path . "/vimrc.html"
 endif
 
-if filereadable(expand(g:vim_path."/.vimrc.ruby"))
-	execute "source ".g:vim_path . "/.vimrc.ruby"
+if filereadable(expand(g:vim_path."/vimrc.python"))
+	execute "source ".g:vim_path . "/vimrc.python"
+endif
+
+if filereadable(expand(g:vim_path."/vimrc.ruby"))
+	execute "source ".g:vim_path . "/vimrc.ruby"
 endif
 "" Include user's local vim config
-if filereadable(expand(g:vim_path."/.vimrc.local"))
-	execute "source ".g:vim_path . "/.vimrc.local"
+if filereadable(expand(g:vim_path."/vimrc.local"))
+	execute "source ".g:vim_path . "/vimrc.local"
 endif
 
 hi clear texItalStyle

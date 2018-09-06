@@ -1,4 +1,11 @@
 # Vim start
+
+## 연결해서 쓰기
+```bash
+ln -snf `pwd`/vimrc ~/.vimrc
+```
+
+
 ## Pre-requisites
 
 The distribution is designed to work with Vim >= 7.4.
