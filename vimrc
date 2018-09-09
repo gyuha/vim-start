@@ -40,6 +40,8 @@ Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/grep.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'airblade/vim-rooter'
 
 
 if !has("win32")
@@ -77,7 +79,7 @@ Plug 'altercation/vim-colors-solarized'
 " development
 if filereadable(expand(g:vim_path."/vimrc.dev"))
 	Plug 'majutsushi/tagbar'
-	Plug 'Valloric/YouCompleteMe'
+	"Plug 'Valloric/YouCompleteMe'
 endif
 
 " go
@@ -100,6 +102,54 @@ if filereadable(expand(g:vim_path."/vimrc.php"))
 endif
 
 call plug#end()
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTRLP.VIM
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_available=1
+let g:ctrlp_by_filename=1
+ 
+nnoremap g :CtrlPYankRound
+ 
+let g:ctrlp_custom_ignore = { 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|aJs|vendor|gen|bower_components|web.*|dist|.*Zone.Identifier|assets)$', 'file': '\.pyc$\|\.pyo$\|\v\.(exe|so|dll|class|png|jpg|jpeg)$' }
+let NERDTreeIgnore=['\.pyc$', 'aJs$', 'vendor$', 'gen$','bower_components$', 'dist$', 'node_modules$', 'Zone.Identifier$', '\.vim$', '\~$'] " Ignores for NERDTree
+let g:ctrlp_root_markers = ['.ctrlp']
+let g:ctrlp_max_height = 30
+func! MyCtrlPTag()
+    CtrlPTag
+endfunc
+com! MyCtrlPTag call MyCtrlPTag()
+ 
+nnoremap SJ :CtrlPBuffer
+nnoremap SD :CtrlPDir
+nnoremap SN :CtrlPMRUFiles
+nnoremap SM :CtrlPCmdline
+nnoremap ST :CtrlPTag
+nnoremap SQ :CtrlPQuickfix
+nnoremap SY :CtrlPLine
+ 
+nnoremap SE :CtrlprojEdit
+nnoremap SR :Ctrlproj
+nnoremap SL :CtrlprojLastDir
+ 
+nnoremap SC :CtrlPMenu
+nnoremap SP :CtrlP
+ 
+function! CtrlPWithSearchText(search_text, ctrlp_command_end)
+    execute ':CtrlP' . a:ctrlp_command_end
+    sleep
+    call feedkeys(a:search_text)
+endfunction
+command! -nargs=1 CtrlPWithText call CtrlPWithSearchText(, '')
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-ROOTER
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:rooter_manual_only = 1
+let g:rooter_patterns = ['.ctrlp', 'build.gradle', '.git', '.classpath', 'AndroidManifest.xml']
+
+
 
 " Required:
 filetype plugin indent on

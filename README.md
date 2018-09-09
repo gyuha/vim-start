@@ -98,3 +98,6 @@ Run vim and type the following command:
 ```vim
 :PlugInstall
 ```
+
+# 참고 사이트
+* [지금 사용하는 Vim 플러그인 50개](https://github.com/kien/ctrlp.vim)
