@@ -82,6 +82,10 @@ if filereadable(expand(g:vim_path."/vimrc.dev"))
 	"Plug 'Valloric/YouCompleteMe'
 endif
 
+if filereadable(expand(g:vim_path."/vimrc.javascript"))
+	Plug 'leafgarland/typescript-vim'
+endif
+
 " go
 if filereadable(expand(g:vim_path."/vimrc.go"))
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
