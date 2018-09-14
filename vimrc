@@ -30,7 +30,7 @@ call plug#begin(expand(g:vim_path . '/plugged'))
 "*****************************************************************************
 "Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'jlanzarotta/bufexplorer'
@@ -550,5 +550,6 @@ endif
 if filereadable(expand(g:vim_path."/vimrc.local"))
 	execute "source ".g:vim_path . "/vimrc.local"
 endif
+
 
 hi clear texItalStyle
