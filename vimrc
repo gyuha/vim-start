@@ -28,10 +28,7 @@ call plug#begin(expand(g:vim_path . '/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-"Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
-"Plug 'Yggdroot/indentLine'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
@@ -42,6 +39,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/grep.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-rooter'
+Plug 'leafgarland/typescript-vim'
 
 
 if !has("win32")
@@ -102,50 +100,11 @@ endif
 " php
 if filereadable(expand(g:vim_path."/vimrc.php"))
 	Plug 'arnaud-lb/vim-php-namespace'
-	Plug 'stanangeloff/php.vim'
 endif
 
 call plug#end()
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CTRLP.VIM
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_available=1
-let g:ctrlp_by_filename=1
- 
-nnoremap g :CtrlPYankRound
- 
-let g:ctrlp_custom_ignore = { 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|aJs|vendor|gen|bower_components|web.*|dist|.*Zone.Identifier|assets)$', 'file': '\.pyc$\|\.pyo$\|\v\.(exe|so|dll|class|png|jpg|jpeg)$' }
-let NERDTreeIgnore=['\.pyc$', 'aJs$', 'vendor$', 'gen$','bower_components$', 'dist$', 'node_modules$', 'Zone.Identifier$', '\.vim$', '\~$'] " Ignores for NERDTree
-let g:ctrlp_root_markers = ['.ctrlp']
-let g:ctrlp_max_height = 30
-func! MyCtrlPTag()
-    CtrlPTag
-endfunc
-com! MyCtrlPTag call MyCtrlPTag()
- 
-nnoremap SJ :CtrlPBuffer
-nnoremap SD :CtrlPDir
-nnoremap SN :CtrlPMRUFiles
-nnoremap SM :CtrlPCmdline
-nnoremap ST :CtrlPTag
-nnoremap SQ :CtrlPQuickfix
-nnoremap SY :CtrlPLine
- 
-nnoremap SE :CtrlprojEdit
-nnoremap SR :Ctrlproj
-nnoremap SL :CtrlprojLastDir
- 
-nnoremap SC :CtrlPMenu
-nnoremap SP :CtrlP
- 
-function! CtrlPWithSearchText(search_text, ctrlp_command_end)
-    execute ':CtrlP' . a:ctrlp_command_end
-    sleep
-    call feedkeys(a:search_text)
-endfunction
-command! -nargs=1 CtrlPWithText call CtrlPWithSearchText(, '')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-ROOTER
