@@ -470,7 +470,8 @@ set pastetoggle=<F12>			" pastetoggle (sane indentation on pastes)
 "" vim-markdown
 let g:vim_markdown_conceal = 0
 
-
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Include user's language vim config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
