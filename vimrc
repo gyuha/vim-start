@@ -41,6 +41,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-rooter'
 Plug 'leafgarland/typescript-vim'
 
+if isdirectory('~/.fzf') == 0
+	Plug '~/.fzf'
+endif
 
 if !has("win32")
 	let g:make = 'gmake'
