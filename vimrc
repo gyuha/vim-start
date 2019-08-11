@@ -186,8 +186,7 @@ set gfn=Monospace\ 10
 
 if has("gui_running")
 	set guioptions=egrti
-	set guifont=ACoding\ 13
-	set guifontwide=14
+	set guifont=Monospace\ 13
 	set lsp=9
 	set clipboard=unnamed
 else
