@@ -1,0 +1,192 @@
+" set tenc=korea
+" set enc=utf8
+" set langmenu=none
+
+let g:vim_path = $HOME.'\util\vim\vimfiles'
+
+" autocmd VimEnter * PlugInstall
+
+" Specify a directory for plugins
+call plug#begin(expand(g:vim_path.'/plugged'))
+
+" Make sure you use single quotes
+Plug 'Raimondi/delimitMate'
+Plug 'easymotion/vim-easymotion'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/grep.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'airblade/vim-rooter'
+Plug 'leafgarland/typescript-vim'
+
+"" Vim-Session
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+"" Color
+Plug 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
+
+" HTML
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'tpope/vim-haml'
+Plug 'mattn/emmet-vim'
+
+
+" Initialize plugin system
+call plug#end()
+
+" Required:
+filetype plugin indent on
+
+"*****************************************************************************
+"" Basic Setup
+"*****************************************************************************"
+"" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,cp949
+
+"" Fix backspace indent
+set backspace=indent,eol,start
+
+"" Tabs. May be overriten by autocmd rules
+set tabstop=2
+set softtabstop=0
+set shiftwidth=2
+set noexpandtab
+
+"" Map leader to ,
+let mapleader=','
+
+"" Enable hidden buffers
+set hidden
+
+"" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set fileformats=unix,dos,mac
+set showcmd
+
+" session management
+let g:session_directory = g:vim_path."/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+let g:session_command_aliases = 1
+
+syntax on
+set ruler
+set number
+
+
+if filereadable(expand(g:vim_path."/plugged/molokai/colors/molokai.vim"))
+	set background=dark
+	colorscheme molokai 
+endif
+
+" GUI
+set fileencodings=utf-8,cp949
+set langmenu=cp949
+set guifont=D2Coding:h15
+
+set renderoptions=type:directx,
+										\gamma:1.0,
+										\contrast:0.5,
+										\level:1,
+										\geom:1,
+										\renmode:5,
+										\taamode:1
+set antialias
+set lines=60 columns=120
+set guioptions-=T
+set guioptions-=m
+
+set mousemodel=popup
+set t_Co=256
+set t_ut=
+
+"" Use modeline overrides
+set modeline
+set modelines=10
+
+set title
+set titleold="Terminal"
+set titlestring=%F
+
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+	autocmd GUIEnter * set visualbell t_vb=
+endif
+
+
+"" Copy/Paste/Cut
+if has('unnamedplus')
+	set clipboard=unnamed,unnamedplus
+endif
+
+noremap YY "+y<CR>
+noremap <leader>p "+gP<CR>
+noremap XX "+x<CR>
+
+if has('macunix')
+	" pbcopy for OSX copy/paste
+	vmap <C-x> :!pbcopy<CR>
+	vmap <C-c> :w !pbcopy<CR><CR>
+endif
+
+"" Buffer nav
+noremap <leader>z :bp<CR>
+noremap <leader>q :bp<CR>
+noremap <leader>x :bn<CR>
+noremap <leader>w :bn<CR>
+
+"" Close buffer
+noremap <leader>c :bd<CR>
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
+
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+"" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
+"" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+"" Mouse Toggle
+nnoremap <silent> <F9> :call ToggleMouse()<CR>
+function! ToggleMouse()
+	if &mouse == 'a'
+		set mouse=
+		echo "Mouse usage disabled"
+	else
+		set mouse=a
+		echo "Mouse usage enabled"
+	endif
+endfunction
+
+noremap <F5> :NERDTreeToggle<CR>
+noremap <F6> :BufExplorer<CR>
+
+" Dos to Unix
+" noremap <F8> :%s/\r\(\n\)/\1/g<CR>
+set pastetoggle=<F12>			" pastetoggle (sane indentation on pastes)
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
