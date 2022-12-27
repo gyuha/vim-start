@@ -421,8 +421,12 @@ noremap XX "+x<CR>
 
 if has('macunix')
 	" pbcopy for OSX copy/paste
-	vmap <C-x> :!pbcopy<CR>
-	vmap <C-c> :w !pbcopy<CR><CR>
+	"vmap <C-x> :!pbcopy<CR>
+	"vmap <C-c> :w !pbcopy<CR><CR>
+	vmap <C-c> "+y
+	vmap <C-x> "+c
+	vmap <C-v> "*c<Esc>"+p
+	imap <C-v> <Sec>"+pi
 endif
 
 "" Buffer nav
